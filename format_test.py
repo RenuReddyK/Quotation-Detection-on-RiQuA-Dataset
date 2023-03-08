@@ -42,6 +42,7 @@ class FormatConvertor:
         with open(text_file, 'r') as f:
             text_string = f.read()
         input_annotations = []
+        
         # Read each line of the annotation file to a dictionary
         with open(annotation_file, 'r') as fi:
             for line in fi:
@@ -56,6 +57,7 @@ class FormatConvertor:
                 annotation_record["end"] = end
                 annotation_record["text"] = ' '.join(entry[4:])
                 input_annotations.append(annotation_record)
+                
         # Annotation file need not be sorted by start position so sort explicitly. Can also be done using end position
         input_annotations = sorted(input_annotations, key=lambda x: x["start"])
 
@@ -68,14 +70,13 @@ class FormatConvertor:
         with open(self.output_file, 'w') as fo:
             for file_count, file_pair in enumerate(file_pair_list):
                 annotation_file, text_file = file_pair.ann, file_pair.text  
-                # if "austen_emma_3" not in text_file:
-                #     continue
+
                 input_annotations, text_string = self.read_input(annotation_file, text_file)
                 fo.write("\n")
                 fo.write("-DOCSTART- O\n")
                 old_token = ""
 
-                # print(input_annotations)
+
                 new_input_annotations = []
                 old_start = -1
                 old_end = -1
@@ -96,16 +97,14 @@ class FormatConvertor:
 
                     old_end = curr_end
                     old_start = curr_start  
-                print(len(new_input_annotations))
-                print(new_input_annotations[105:120])  
+
                 for i in range(len(new_input_annotations)):
                     curr_start = new_input_annotations[i]["start"]
                     curr_end = new_input_annotations[i]["end"]
                     if curr_start > 3500 or curr_start < 3000:
                         continue
                     temp_ann.append(new_input_annotations[i])
-                print("*****************************")
-                print(temp_ann)
+
                 curr_ann_index = 0
                 curr_ann_start = new_input_annotations[curr_ann_index]["start"]
                 curr_ann_end = new_input_annotations[curr_ann_index]["end"]
@@ -150,22 +149,13 @@ class FormatConvertor:
                                 fo.write('\n')
                             curr_token = ""
                         i = j
-                        # print(i)
-                        # print("new i :", i)
                         curr_ann_index += 1
-                        print(len(new_input_annotations))
-                        print(curr_ann_index)
-                        print(new_input_annotations[-1])
-                        print(len(text_string))
+                  
                         if curr_ann_index < len(new_input_annotations):
                             curr_ann_start = new_input_annotations[curr_ann_index]["start"]
                             curr_ann_end = new_input_annotations[curr_ann_index]["end"]
                             curr_label = new_input_annotations[curr_ann_index]["label"]
-                        # print(curr_ann_start)
-                        # print(curr_ann_end)
-                        # print(curr_label)
                     else:
-                        # print("second")
                         if text_string[i] == " ":
                             if curr_token.strip("-") != "":
                                 fo.write(f'{curr_token.strip("-")} O\n')
