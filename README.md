@@ -32,3 +32,9 @@ We found that, as expected, the most common tag has some success in identifying 
 |:--:| 
 | *Entity word cloud* |
 
+# References
+
+[1] Tom B. Brown, Benjamin Mann, Nick Ryder, Melanie Subbiah, Jared Kaplan, Prafulla Dhariwal, Arvind Neelakantan, Pranav Shyam, Girish Sastry, Amanda Askell, Sandhini Agarwal, Ariel Herbert-Voss, Gretchen Krueger, Tom Henighan, Rewon Child, Aditya Ramesh, Daniel M. Ziegler, Jeffrey Wu, Clemens Winter, Christopher Hesse, Mark Chen, Eric Sigler, Mateusz Litwin, Scott Gray, Benjamin Chess, Jack Clark, Christopher Berner, Sam McCandlish, Alec Radford, Ilya Sutskever, and Dario Amodei. Language models are few-shot learners, 2020. 
+
+[2] Yue Chen, Zhen-Hua Ling, and Qing-Feng Liu. A Neural-Network-Based Approach to Identifying Speak- ers in Novels. In Interspeech 2021, pages 4114–4118. ISCA, August 2021.
+
